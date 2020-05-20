@@ -1,0 +1,14 @@
+{
+  "name": "srijanone/ezcontent_amp",
+  "description": "An AMP subtheme",
+  "keywords": ["ezcontent", "amp", "Drupal"],
+  "type": "drupal-theme",
+  "homepage": "https://github.com/srijanone/ezcontent_theme",
+  "support": {
+    "issues": "https://github.com/srijanone/ezcontent_theme"
+  },
+  "require": {
+    "drupal/amptheme": "^3.0"
+  },
+  "license": "GPL-2.0+"
+}

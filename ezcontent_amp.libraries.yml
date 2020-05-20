@@ -1,0 +1,25 @@
+amp.inline-gallery:
+  remote: https://amp.dev/documentation/components/amp-inline-gallery
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-inline-gallery-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-inline-gallery", async: true } }
+  dependencies:
+    - amp/runtime
+
+amp.base-carousel:
+  remote: https://amp.dev/documentation/components/amp-base-carousel
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-base-carousel-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-base-carousel", async: true } }
+  dependencies:
+    - amp/runtime

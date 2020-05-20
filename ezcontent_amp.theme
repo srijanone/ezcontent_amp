@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * Implements hook_preprocess_video_embed_iframe__youtube().
+ */
+function ezcontent_amp_preprocess_video_embed_iframe__youtube(&$variables) {
+  preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $variables['url'], $match);
+  $variables['video_id'] = $match[1];
+}
+
+/**
+ * Implements hook_preprocess_video_embed_iframe__vimeo().
+ */
+function ezcontent_amp_preprocess_video_embed_iframe__vimeo(&$variables) {
+  preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $variables['url'], $match);
+  $variables['video_id'] = $match[3];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ezcontent_amp_preprocess_media__source_twitter(&$variables) {
+  $twitter_url = explode('/', $variables['content']['embed_code'][0]['#path']);
+  $variables['tweet_id'] = end($twitter_url);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ezcontent_amp_preprocess_paragraph__faq__amp(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  if ($paragraph->field_faq_items->entity) {
+    /** @var \Drupal\paragraphs\Entity\Paragraph $faq_item */
+    foreach ($paragraph->field_faq_items->referencedEntities() as $faq_item) {
+      $variables['faq_items'][] = [
+        'question' => $faq_item->field_question->value,
+        'answer' => $faq_item->field_answer->processed
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ezcontent_amp_preprocess_paragraph__gallery(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $media_image_urls = [];
+  if ($paragraph->field_media_items->entity) {
+    /** @var \Drupal\media\Entity\Media $media_entity */
+    foreach ($paragraph->field_media_items->referencedEntities() as $media_entity) {
+      $image_entity = $media_entity->field_media_image->entity;
+      $media_image_urls[] = file_create_url($image_entity->uri->value);
+    }
+  }
+  if ($variables['view_mode'] === 'gallery') {
+    $variables['gallery_media'] = $media_image_urls;
+  }
+  if ($variables['view_mode'] === 'gallery_carousel') {
+    $variables['gallery_carousel_media'] = $media_image_urls;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ezcontent_amp_preprocess_paragraph__card__amp_hero_media(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  if ($paragraph->field_media->entity) {
+    /** @var \Drupal\media\Entity\Media $media_entity */
+    $media_entity = $paragraph->field_media->entity;
+    if ($media_entity->field_media_image->entity) {
+      $variables['image_url'] = file_create_url($media_entity->field_media_image->entity->uri->value);
+      $variables['image_attributes'] = $media_entity->field_media_image->first()->getValue();
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ezcontent_amp_preprocess_paragraph__hero_media__amp(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  if ($paragraph->field_card->entity) {
+    $variables['image_details'] = [];
+    /** @var \Drupal\paragraphs\Entity\Paragraph $card_entity */
+    foreach ($paragraph->field_card->referencedEntities() as $card_entity) {
+      if ($card_entity->field_media->entity) {
+        /** @var \Drupal\media\Entity\Media $media_entity */
+        $media_entity = $card_entity->field_media->entity;
+        if ($media_entity->field_media_image->entity) {
+          $variables['image_details'][] = [
+            'image_url' => file_create_url($media_entity->field_media_image->entity->uri->value),
+            'image_attributes' => $media_entity->field_media_image->first()->getValue()
+          ];
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.amp
+    - field.field.paragraph.quote.field_quote
+    - field.field.paragraph.quote.field_source
+    - paragraphs.paragraphs_type.quote
+  module:
+    - amp
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.quote.amp
+targetEntityType: paragraph
+bundle: quote
+mode: amp
+content:
+  field_quote:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: amp_text
+    region: content
+  field_source:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: amp_text
+    region: content
+hidden: {  }

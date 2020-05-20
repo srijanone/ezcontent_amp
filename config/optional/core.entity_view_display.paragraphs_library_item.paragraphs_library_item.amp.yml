@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraphs_library_item.amp
+  module:
+    - amp
+    - entity_reference_revisions
+    - layout_builder
+    - paragraphs_library
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraphs_library_item.paragraphs_library_item.amp
+targetEntityType: paragraphs_library_item
+bundle: paragraphs_library_item
+mode: amp
+content:
+  label:
+    type: amp_text
+    weight: 0
+    label: hidden
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  paragraphs:
+    label: hidden
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    region: content
+    settings:
+      view_mode: amp
+      link: ''
+    third_party_settings: {  }
+hidden: {  }

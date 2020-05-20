@@ -1,0 +1,103 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.amp
+    - field.field.paragraph.card.field_link
+    - field.field.paragraph.card.field_media
+    - field.field.paragraph.card.field_short_title
+    - field.field.paragraph.card.field_subhead
+    - field.field.paragraph.card.field_summary
+    - field.field.paragraph.card.field_text_background_color
+    - field.field.paragraph.card.field_text_position
+    - field.field.paragraph.card.field_title
+    - field.field.paragraph.card.layout_selection
+    - paragraphs.paragraphs_type.card
+  module:
+    - amp
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - link
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+  layout_library:
+    enable: true
+  layout_builder_restrictions:
+    entity_view_mode_restriction:
+      allowed_blocks:
+        'Custom block types': {  }
+        Forms: {  }
+        Help: {  }
+        'Inline blocks': {  }
+        'Lists (Views)': {  }
+        'Paragraph fields': {  }
+        System: {  }
+        User: {  }
+        'User fields': {  }
+        core: {  }
+      allowed_layouts: {  }
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+    allowed_block_categories: {  }
+id: paragraph.card.amp
+targetEntityType: paragraph
+bundle: card
+mode: amp
+content:
+  field_link:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_media:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: amp_card_list
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_short_title:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: amp_text
+    region: content
+  field_subhead:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: amp_text
+    region: content
+  field_summary:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: amp_text_trimmed
+    region: content
+  field_title:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: amp_text
+    region: content
+hidden:
+  field_text_background_color: true
+  field_text_position: true
+  layout_selection: true

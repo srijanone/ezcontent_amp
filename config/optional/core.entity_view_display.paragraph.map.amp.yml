@@ -1,0 +1,79 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.amp
+    - field.field.paragraph.map.field_body
+    - field.field.paragraph.map.field_link
+    - field.field.paragraph.map.field_map
+    - field.field.paragraph.map.field_short_title
+    - field.field.paragraph.map.field_title
+    - paragraphs.paragraphs_type.map
+  module:
+    - amp
+    - layout_builder
+    - link
+    - simple_gmap
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.map.amp
+targetEntityType: paragraph
+bundle: map
+mode: amp
+content:
+  field_body:
+    type: amp_text
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_map:
+    weight: 2
+    label: hidden
+    settings:
+      include_map: true
+      apikey: ''
+      iframe_width: 100%
+      iframe_height: '400'
+      static_scale: 1
+      link_text: 'View larger map'
+      zoom_level: 14
+      map_type: m
+      langcode: en
+      include_static_map: false
+      include_link: false
+      include_text: false
+      iframe_title: ''
+    third_party_settings: {  }
+    type: simple_gmap
+    region: content
+  field_short_title:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: amp_text
+    region: content
+  field_title:
+    type: amp_text
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

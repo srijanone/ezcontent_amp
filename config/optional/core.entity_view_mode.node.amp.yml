@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - amp
+  module:
+    - node
+id: node.amp
+label: AMP
+targetEntityType: node
+cache: true

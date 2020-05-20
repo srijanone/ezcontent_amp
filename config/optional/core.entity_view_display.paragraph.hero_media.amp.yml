@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.amp
+    - field.field.paragraph.hero_media.field_card
+    - paragraphs.paragraphs_type.hero_media
+  module:
+    - entity_reference_revisions
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.hero_media.amp
+targetEntityType: paragraph
+bundle: hero_media
+mode: amp
+content:
+  field_card:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: amp_hero_media
+      link: ''
+    third_party_settings: {  }
+hidden: {  }

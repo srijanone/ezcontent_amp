@@ -1,0 +1,6 @@
+name: EZContent AMP
+type: theme
+base theme: amptheme
+description: An AMP subtheme for EZContent.
+package: Custom
+core: 8.x

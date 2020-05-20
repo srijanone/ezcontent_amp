@@ -1,0 +1,15 @@
+{{ attach_library('amp/amp.carousel') }}
+<amp-carousel width="450" height="600" layout="responsive" type="slides">
+  {% for image_detail in image_details %}
+    <div>
+      <amp-img
+        alt="{{ image_detail['image_attributes']['alt'] }}"
+        src="{{ image_detail['image_url'] }}"
+        width="{{ image_detail['image_attributes']['width'] }}"
+        height="{{ image_detail['image_attributes']['height'] }}"
+        layout="responsive"
+      ></amp-img>
+      {{ content.field_card[loop.index-1] }}
+    </div>
+  {% endfor %}
+</amp-carousel>

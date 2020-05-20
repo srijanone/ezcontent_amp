@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.amp
+    - field.field.paragraph.faq_qa.field_answer
+    - field.field.paragraph.faq_qa.field_question
+    - paragraphs.paragraphs_type.faq_qa
+  module:
+    - amp
+    - layout_builder
+third_party_settings: {  }
+id: paragraph.faq_qa.amp
+targetEntityType: paragraph
+bundle: faq_qa
+mode: amp
+content:
+  field_answer:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: amp_text
+    region: content
+  field_question:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: amp_text
+    region: content
+hidden: {  }

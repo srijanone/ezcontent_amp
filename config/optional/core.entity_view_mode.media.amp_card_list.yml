@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.amp_card_list
+label: 'AMP Card List'
+targetEntityType: media
+cache: true

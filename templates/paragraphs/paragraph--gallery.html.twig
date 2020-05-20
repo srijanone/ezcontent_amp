@@ -1,0 +1,64 @@
+{% if content.field_title.0['#context']['value'] %}
+  <div>{{ content.field_title.0['#context']['value'] }}</div>
+{% endif %}
+{% if gallery_media %}
+  {{ attach_library('amp/amp.lightbox-gallery') }}
+  <div>
+    {% for image in gallery_media %}
+      {% if loop.index == 1 %}
+        <amp-img
+          lightbox="{{ paragraph.id.value }}"
+          src="{{ image }}"
+          layout="responsive"
+          width="16"
+          height="9"
+        >
+          <span class="overlay-text">View Gallery</span>
+        </amp-img>
+      {% else %}
+        <div hidden>
+          <amp-img
+            lightbox="{{ paragraph.id.value }}"
+            src="{{ image }}"
+            layout="responsive"
+            width="16"
+            height="9"
+          ></amp-img>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+{% if gallery_carousel_media %}
+  {{ attach_library('ezcontent_amp/amp.inline-gallery') }}
+  {{ attach_library('ezcontent_amp/amp.base-carousel') }}
+  <amp-inline-gallery layout="container">
+    <amp-base-carousel
+      class="gallery"
+      layout="responsive"
+      width="3"
+      height="2"
+      snap-align="center"
+      loop="true"
+      visible-count="1"
+      lightbox="{{ paragraph.id.value }}"
+    >
+      {% for image in gallery_carousel_media %}
+        <amp-img
+          src="{{ image }}"
+          layout="responsive"
+          width="16"
+          height="9"
+        ></amp-img>
+      {% endfor %}
+    </amp-base-carousel>
+    <amp-inline-gallery-pagination layout="nodisplay" inset>
+    </amp-inline-gallery-pagination>
+  </amp-inline-gallery>
+{% endif %}
+{% if content.field_body.0['#text'] %}
+  {{ content.field_body.0['#text'] | raw }}
+{% endif %}
+{% if content.field_link.0['#url'] %}
+  <a href="{{ content.field_link.0['#url'] }}">{{ content.field_link.0['#title'] }}</a>
+{% endif %}

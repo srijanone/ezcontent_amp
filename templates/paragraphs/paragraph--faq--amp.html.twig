@@ -1,0 +1,9 @@
+{{ attach_library('amp/amp.accordion') }}
+<amp-accordion id="faq-accordion" expand-single-section>
+  {% for faq_item in faq_items %}
+    <section>
+      <h3>{{ faq_item.question }}</h3>
+      {{ faq_item.answer }}
+    </section>
+  {% endfor %}
+</amp-accordion>

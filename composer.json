@@ -12,5 +12,12 @@
     "drupal/amptheme": "^3.0",
     "masterminds/html5": "~2.3.0"
   },
+    "extra": {
+      "patches": {
+        "drupal/amptheme": {
+          "Template \"themes/contrib/amptheme/amptheme/templates/navigation/amp-skip-link.html.twig\" is not defined": "https://www.drupal.org/files/issues/2020-05-21/amp_skip_link_template_not_found-3138517-2.patch"
+        }
+      }
+    },
   "license": "GPL-2.0+"
 }

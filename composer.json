@@ -3,12 +3,14 @@
   "description": "An AMP subtheme",
   "keywords": ["ezcontent", "amp", "Drupal"],
   "type": "drupal-theme",
-  "homepage": "https://github.com/srijanone/ezcontent_theme",
+  "homepage": "https://github.com/srijanone/ezcontent_amp",
   "support": {
-    "issues": "https://github.com/srijanone/ezcontent_theme"
+    "issues": "https://github.com/srijanone/ezcontent_amp"
   },
   "require": {
-    "drupal/amptheme": "^3.0"
+    "drupal/amp": "^3.0",
+    "drupal/amptheme": "^3.0",
+    "masterminds/html5": "~2.3.0"
   },
   "license": "GPL-2.0+"
 }

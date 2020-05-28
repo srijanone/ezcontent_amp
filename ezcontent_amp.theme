@@ -86,19 +86,43 @@ function ezcontent_amp_preprocess_paragraph__hero_media__amp(&$variables) {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   if ($paragraph->field_card->entity) {
-    $variables['image_details'] = [];
-    /** @var \Drupal\paragraphs\Entity\Paragraph $card_entity */
-    foreach ($paragraph->field_card->referencedEntities() as $card_entity) {
-      if ($card_entity->field_media->entity) {
-        /** @var \Drupal\media\Entity\Media $media_entity */
-        $media_entity = $card_entity->field_media->entity;
-        if ($media_entity->field_media_image->entity) {
-          $variables['image_details'][] = [
-            'image_url' => file_create_url($media_entity->field_media_image->entity->uri->value),
-            'image_attributes' => $media_entity->field_media_image->first()->getValue()
-          ];
-        }
+    $variables['image_details'] = _get_referenced_card_entities_images($paragraph->field_card->referencedEntities());
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ezcontent_amp_preprocess_field__block_content__field_card__hero_media_block(&$variables) {
+  /** @var \Drupal\block_content\Entity\BlockContent $block_content */
+  $block_content = $variables['element']['#object'];
+  if ($block_content->field_card->entity) {
+    $variables['image_details'] = _get_referenced_card_entities_images($block_content->field_card->referencedEntities());
+  }
+}
+
+/**
+ * @param $card_entities
+ *   Card entities array.
+ *
+ * @return array $image_details
+ *   Array of Image details fetch from the Card Entities.
+ * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+ */
+function _get_referenced_card_entities_images($card_entities) {
+  $image_details = [];
+  /** @var \Drupal\paragraphs\Entity\Paragraph $card_entity */
+  foreach ($card_entities as $card_entity) {
+    if ($card_entity->field_media->entity) {
+      /** @var \Drupal\media\Entity\Media $media_entity */
+      $media_entity = $card_entity->field_media->entity;
+      if ($media_entity->field_media_image->entity) {
+        $image_details[] = [
+          'image_url' => file_create_url($media_entity->field_media_image->entity->uri->value),
+          'image_attributes' => $media_entity->field_media_image->first()->getValue()
+        ];
       }
     }
   }
+  return $image_details;
 }

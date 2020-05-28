@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cards
+    - core.entity_view_mode.block_content.amp
+    - field.field.block_content.cards.field_card
+    - field.field.block_content.cards.field_link
+    - field.field.block_content.cards.field_title
+    - field.field.block_content.cards.view_mode_selection
+  module:
+    - amp
+    - entity_reference_revisions
+    - layout_builder
+    - link
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: block_content.cards.amp
+targetEntityType: block_content
+bundle: cards
+mode: amp
+content:
+  field_card:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: amp
+      link: ''
+    third_party_settings: {  }
+  field_link:
+    type: link
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  field_title:
+    type: amp_text
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  view_mode_selection: true

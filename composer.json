@@ -9,8 +9,7 @@
   },
   "require": {
     "drupal/amp": "^3.0",
-    "drupal/amptheme": "^3.0",
-    "masterminds/html5": "~2.3.0"
+    "drupal/amptheme": "^3.0"
   },
   "license": "GPL-2.0+"
 }

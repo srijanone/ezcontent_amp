@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - amp
+  theme:
+    - ezcontent_amp
+id: ampsitebranding
+theme: ezcontent_amp
+region: header
+weight: 0
+provider: null
+plugin: amp_system_branding_block
+settings:
+  id: amp_system_branding_block
+  label: 'AMP Site branding'
+  provider: amp
+  label_display: '0'
+  use_site_logo: 1
+  use_site_name: 0
+  use_site_slogan: 0
+  logo_width: '139'
+  logo_height: '47'
+visibility: {  }

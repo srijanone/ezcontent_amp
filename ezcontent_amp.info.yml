@@ -3,4 +3,4 @@ type: theme
 base theme: amptheme
 description: An AMP subtheme for EZContent.
 package: Custom
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^8.8 || ^9 || ^10
